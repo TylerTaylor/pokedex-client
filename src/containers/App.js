@@ -47,11 +47,13 @@ class App extends Component {
       <Router>
         <div className="App">
           {/* Navbar */}
-          {/* <NavBar isAuthenticated={this.props.isAuthenticated} logout={this.props.logout} currentUser={this.props.currentUser.name || "Apparently we have no user" }/> */}
-          <NavBar isAuthenticated={this.props.isAuthenticated} logout={this.props.logout}/>
+          <NavBar isAuthenticated={this.props.isAuthenticated} logout={this.props.logout} currentUser={this.props.currentUser.username || "Apparently we have no user" }/>
 
           {/* Other components / routes */}
-          <Route exact path="/" component={Welcome} />
+          {/* <Route exact path="/" component={Welcome} currentUser={this.props.currentUser.username || "Apparently we have no user" }/> */}
+
+          <Route exact path="/" component={() => <Welcome currentUser={this.props.currentUser.username } />}/>
+
           <Route exact path="/login" component={LoginForm} />
         </div>
       </Router>
