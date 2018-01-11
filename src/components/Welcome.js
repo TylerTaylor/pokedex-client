@@ -1,15 +1,13 @@
 import React from 'react';
+import { Button } from 'react-materialize';
+import { Link } from 'react-router-dom';
 
 class Welcome extends React.Component {
-
-    constructor(props) {
-        super(props)
-    }
     
     render() {
         // debugger;
         return (
-            <div>
+            <div className="center">
                 { this.props.currentUser ? 
                     <h1>Welcome to Pokedex, {this.props.currentUser}</h1>
                 :
@@ -18,6 +16,9 @@ class Welcome extends React.Component {
                         <p>We have no user info here :(</p>
                     </div>
                 }
+                {/* <Button waves="light" node="a" href="/cards">View All Cards</Button> */}
+                <Button waves="light"><Link to="/cards">View All Cards</Link></Button>
+
             </div>
         );
     }

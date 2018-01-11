@@ -1,6 +1,6 @@
 import { reset, SubmissionError } from 'redux-form';
 
-// Actions
+// Action Creators
 
 const authRequest = () => {
     return {

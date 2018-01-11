@@ -3,9 +3,13 @@ import thunk from 'redux-thunk';
 // import { reducer as form } from 'redux-form';
 
 import auth from '../reducers/auth';
+import cards from '../reducers/cards';
+import search from '../reducers/search';
 
 const reducers = combineReducers({
-    auth
+    auth,
+    cards,
+    search
 })
 
 const middleware = [thunk]

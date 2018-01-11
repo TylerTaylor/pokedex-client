@@ -13,6 +13,7 @@ import './App.css';
 import NavBar from '../components/Navbar'
 import Welcome from '../components/Welcome'
 import LoginForm from '../components/LoginForm'
+import CardsIndex from './CardsIndex'
 
 import { authenticate, authFailure } from '../actions/auth-actions';
 
@@ -55,6 +56,8 @@ class App extends Component {
           <Route exact path="/" component={() => <Welcome currentUser={this.props.currentUser.username } />}/>
 
           <Route exact path="/login" component={LoginForm} />
+
+          <Route exact path="/cards" component={ CardsIndex } />
         </div>
       </Router>
     );
