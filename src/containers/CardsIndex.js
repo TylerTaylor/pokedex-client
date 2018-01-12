@@ -49,7 +49,8 @@ class CardsIndex extends Component {
 const mapStateToProps = (state) => {
     return ({
         cards: state.cards,
-        query: state.search.query
+        query: state.search.query,
+        totalPages: state.totalPages
     })
 }
 

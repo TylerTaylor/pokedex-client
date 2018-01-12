@@ -23,26 +23,47 @@ const setSearchQuery = query => {
     }
 }
 
+const setTotalPages = totalPages => {
+    return {
+        type: 'SET_TOTAL_PAGES',
+        totalPages
+    }
+}
+
 // Aysnc Actions
 
 export const fetchCards = (query, pageNum) => {
     if (pageNum === undefined) {
         pageNum = 1
     }
-
     // handle a search query if it exists
     if (query) {
         return dispatch => {
             return fetch(`http://localhost:3000/api/v1/search/${query}?page=${pageNum}`)
-                .then(res => res.json())
-                .then(cards => dispatch(setCards(cards)))
+                .then(res => {
+                    // we need to set our total page number here
+                    dispatch(setTotalPages(res.headers.get('Total')))
+                    return res.json()
+                })
+                .then(cards => {
+                    dispatch(setCards(cards))
+                    dispatch(setSearchQuery(query))
+                    // debugger;
+                })
                 .catch(error => console.log(error))
         }
     } else {
         return dispatch => {
             return fetch(`http://localhost:3000/api/v1/cards?page=${pageNum}`)
-                .then(res => res.json())
-                .then(cards => dispatch(setCards(cards)))
+                .then(res => {
+                    // we also need to set totalPages here
+                    dispatch(setTotalPages(res.headers.get('Total')))
+                    return res.json()
+                })
+                .then(cards => {
+                    dispatch(setCards(cards))
+                    dispatch(setSearchQuery(null))
+                })
                 .catch(error => console.log(error))
         }
     }
