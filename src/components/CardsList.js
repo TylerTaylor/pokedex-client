@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Collection, Pagination } from 'react-materialize';
+import { Collection, CollectionItem, Pagination } from 'react-materialize';
+import '../styles/cards-list.css'
 
 const CardsList = ({ cards, updateCards }) => {
 
@@ -11,7 +12,9 @@ const CardsList = ({ cards, updateCards }) => {
                 // link with key of card.id to card show page, by name for now
             // close list
             <Collection key={ card.id }>
-                <Link key={ card.id } to={`/cards/${card.id}`}>{ card.name } - { card.set }</Link>
+                <Link key={ card.id } to={`/cards/${card.id}`} className="collection-item">
+                    { card.name } - { card.set }
+                </Link>
             </Collection>
         );
 
@@ -20,18 +23,15 @@ const CardsList = ({ cards, updateCards }) => {
         }
     
         return (
-            <div>
+            <div className="cards-list">
                 { renderCards }
                 <Pagination items={cards.totalPages / 10} activePage={1} maxButtons={8} onSelect={changePage}/>
             </div>
-            // list
-              // { renderCards }   
-            // end list
         )
     } else {
         return (
             <div>
-                <h1>JUST GET IT</h1>
+                <h1>Put a loading wheel here</h1>
             </div>
         )
     }

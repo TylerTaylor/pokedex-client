@@ -5,8 +5,8 @@ import { connect } from 'react-redux';
 import CardsList from '../components/CardsList';
 // import action to fetch cards
 import { fetchCards } from '../actions/card-actions';
-
 import Search from '../components/Search';
+import '../styles/cards.css';
 
 class CardsIndex extends Component {
 
@@ -37,7 +37,7 @@ class CardsIndex extends Component {
 
     render() {
         return (
-            <div>
+            <div className="cards-index-container">
                 <Search />
                 <CardsList cards={ this.props.cards } updateCards={ this.updateCards } />
             </div>
