@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
 import { fetchCard, addToCollection } from '../actions/card-actions';
 import { Card } from '../components/Card';
 
@@ -14,7 +13,13 @@ class CardShow extends Component {
     handleAddCard = () => {
         let id = this.props.match.params.id;
         let token = this.props.token;
-        this.props.addToCollection(id, token);
+
+        if (token) {
+            this.props.addToCollection(id, token);
+        } else {
+            this.props.history.push("/login")
+            // how do we redirect from here?
+        }
     }
 
     render() {
