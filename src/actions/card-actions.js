@@ -30,6 +30,13 @@ const setTotalPages = totalPages => {
     }
 }
 
+const setCardInCollection = bool => {
+    return {
+        type: 'SET_CARD_IN_COLLECTION',
+        bool
+    }
+}
+
 // Aysnc Actions
 
 export const fetchCards = (query, pageNum) => {
@@ -79,18 +86,27 @@ export const fetchCard = cardID => {
     }
 }
 
-export const addToCollection = cardID => {
+export const addToCollection = (cardID, token) => {
     return dispatch => {
         return fetch(`http://localhost:3000/api/v1/cards/${cardID}/add`, {
             method: 'post',
             headers: {
                 "Accept":"application/json",
-                "Content-Type":"application/json"
+                "Content-Type":"application/json",
+                "Authorization":`Bearer: ${token}`
             }
         })
             .then(res => res.json())
             .then(response => {
-                debugger;
+                // we need to let the card show page know whether this card
+                //   is in the current user's collection or not
+                // that way the "add to collection" link can 
+                //   become disabled / say "In your collection" or something
+                if (response.cardInCollection === true) {
+                    // rails told us the current user has this card in their collection
+                    debugger;
+                    return dispatch(setCardInCollection(true))
+                }
             })
             .catch(error => console.log(error))
     }
@@ -110,10 +126,3 @@ export const searchCards = (query) => {
             .catch(error => console.log(error))
     }
 }
-
-//  i think i could remove this and call this action creator from searchCards still?
-// export const setSearchQuery = (query) => {
-//     return dispatch => {
-//         dispatch(setSearch(query))
-//     }
-// }

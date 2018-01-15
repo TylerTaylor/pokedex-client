@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Collection, CollectionItem, Pagination } from 'react-materialize';
+import { Collection, CollectionItem, Pagination, ProgressBar } from 'react-materialize';
 import '../styles/cards-list.css'
 
 const CardsList = ({ cards, updateCards }) => {
@@ -31,7 +31,7 @@ const CardsList = ({ cards, updateCards }) => {
     } else {
         return (
             <div>
-                <h1>Put a loading wheel here</h1>
+                <ProgressBar />
             </div>
         )
     }

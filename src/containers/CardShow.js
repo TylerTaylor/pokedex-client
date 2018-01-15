@@ -13,8 +13,8 @@ class CardShow extends Component {
 
     handleAddCard = () => {
         let id = this.props.match.params.id;
-        debugger;
-        this.props.addToCollection(id);
+        let token = this.props.token;
+        this.props.addToCollection(id, token);
     }
 
     render() {
@@ -23,7 +23,7 @@ class CardShow extends Component {
         if (!card.errors) {
             return (
                 <div className="card-flex-container">
-                    <Card card={ card } add={this.handleAddCard}/>
+                    <Card card={ card } inCollection={this.props.inCollection} add={this.handleAddCard}/>
                 </div>
             )
         } else {
@@ -38,8 +38,12 @@ class CardShow extends Component {
 }
 
 const mapStateToProps = (state) => {
+    console.log("Logging CardShow state...")
+    console.log(state)
     return ({
-        card: state.card
+        card: state.card.card,
+        inCollection: state.card.inCollection,
+        token: state.auth.token
     })
 }
 

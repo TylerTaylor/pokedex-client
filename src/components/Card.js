@@ -2,7 +2,7 @@ import React from 'react';
 import { CardPanel, Button } from 'react-materialize';
 import { Link } from 'react-router-dom';
 
-export const Card = ({ card, add }) => (
+export const Card = ({ card, inCollection, add }) => (
 
     <CardPanel key={ card.id }>
         <div>
@@ -29,7 +29,11 @@ export const Card = ({ card, add }) => (
             {/* In the CardShow container we need to send down a dispatch action or two here */}
             <div className="button-container">
                 <Button>Add to Wishlist</Button>
-                <Button onClick={add}>Add to Collection</Button>
+                { !inCollection ?
+                    <Button onClick={add}>Add to Collection</Button>
+                  :
+                    <Button>In Your Collection!</Button>
+                }
             </div>
         </div>
     </CardPanel>

@@ -88,27 +88,6 @@ export const login = (user, router) => {
 }
 
 export const authenticate = (token) => {
-    // return dispatch => {
-    //     dispatch(authRequest())
-
-    //     return ApiService.post('/auth route here', null, token)
-    //         .then(response => {
-    //             const { user, token } = response
-    //             localStorage.setItem('token', token)
-    //             dispatch(authSuccess(user, token))
-    //         })
-    //         .catch((errors) => {
-    //             console.log(errors);
-    //             dispatch(authFailure(errors))
-    //             localStorage.removeItem('token')
-    //         })
-    // }
-
-    // return dispatch => {
-    //     dispatch(authRequest())
-
-    //     return fetch('http://localhost:3000/')
-    // }
     return dispatch => {
         dispatch(authRequest())
         // const body = JSON.stringify(token)
