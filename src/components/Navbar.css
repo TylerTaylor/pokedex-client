@@ -1,3 +1,7 @@
 nav .brand-logo {
     padding-left: 20px;
 }
+
+.nav-links {
+    display: flex;
+}

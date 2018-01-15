@@ -38,6 +38,10 @@ class CardsIndex extends Component {
     render() {
         return (
             <div className="cards-index-container">
+                {/* we need a row above the cardslist that contains
+                    our search component, and buttons for view options (list, grid)
+                    then we can add any sort / filter options on the right
+                */}
                 <Search />
                 <CardsList cards={ this.props.cards } updateCards={ this.updateCards } />
             </div>

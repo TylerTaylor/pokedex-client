@@ -13,7 +13,9 @@ import './App.css';
 import NavBar from '../components/Navbar'
 import Welcome from '../components/Welcome'
 import LoginForm from '../components/LoginForm'
+import RegisterForm from '../components/RegisterForm'
 import CardsIndex from './CardsIndex'
+import CardShow from './CardShow'
 
 import { authenticate, authFailure } from '../actions/auth-actions';
 
@@ -56,7 +58,9 @@ class App extends Component {
           <Route exact path="/" component={() => <Welcome currentUser={this.props.currentUser.username } />}/>
 
           <Route exact path="/login" component={LoginForm} />
+          <Route exact path="/register" component={RegisterForm} />
 
+          <Route exact path="/cards/:id" component={ CardShow } />
           <Route exact path="/cards" component={ CardsIndex } />
         </div>
       </Router>

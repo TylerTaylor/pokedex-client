@@ -26,23 +26,34 @@ export const authFailure = (errors) => {
 // async functions
 
 export const signup = (user, router) => {
-    // return dispatch => {
-    //     dispatch(authRequest())
+
+    const body = JSON.stringify(user)
+
+    return dispatch => {
+        dispatch(authRequest())
         
-        // return ApiService.post('/users', user)
-        //     .then(response => {
-        //         const { user, token } = response
-        //         localStorage.setItem('token', token)
-        //         dispatch(authSuccess(user, token))
-        //         dispatch(reset('signup'))
-        //         router.history.replace('/')
-        //     })
-        //     .catch((errors) => {
-        //         console.log(errors)
-        //         dispatch(authFailure(errors))
-        //         throw new SubmissionError(errors)
-        //     })
-    // }
+        return fetch('http://localhost:3000/users', {
+            method: 'post',
+            body: body,
+            headers: {
+                "Accept":"application/json",
+                "Content-Type":"application/json"
+            }
+        })
+            .then(res => res.json())
+            .then(response => {
+                const { user, token } = response
+                localStorage.setItem('token', token)
+                dispatch(authSuccess(user, token))
+                dispatch(reset('signup'))
+                router.history.replace('/')
+            })
+            .catch((errors) => {
+                console.log(errors)
+                dispatch(authFailure(errors))
+                throw new SubmissionError(errors)
+            })
+    }
 }
 
 export const login = (user, router) => {

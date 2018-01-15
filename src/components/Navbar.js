@@ -37,7 +37,13 @@ class NavBar extends React.Component {
                 { this.props.isAuthenticated ? 
                     <NavLink to="/" onClick={this.handleLogout}>Sign Out</NavLink>
                 :
-                    <NavLink to="/login">Login</NavLink>
+                    <div className="nav-links">
+                        <NavLink to="/register">Sign Up</NavLink>
+                        <NavLink to="/login">Login</NavLink>
+                        {/* <NavItem href="/register">Sign Up</NavItem> */}
+                        {/* <NavItem><NavLink to="/login">Login</NavLink></NavItem> */}
+                        
+                    </div>
                 }
             </Navbar>
         );

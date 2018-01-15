@@ -70,6 +70,33 @@ export const fetchCards = (query, pageNum) => {
 
 }
 
+export const fetchCard = cardID => {
+    return dispatch => {
+        return fetch(`http://localhost:3000/api/v1/cards/${cardID}`)
+            .then(res => res.json())
+            .then(card => dispatch(setCard(card)))
+            .catch(error => console.log(error))
+    }
+}
+
+export const addToCollection = cardID => {
+    return dispatch => {
+        return fetch(`http://localhost:3000/api/v1/cards/${cardID}/add`, {
+            method: 'post',
+            headers: {
+                "Accept":"application/json",
+                "Content-Type":"application/json"
+            }
+        })
+            .then(res => res.json())
+            .then(response => {
+                debugger;
+            })
+            .catch(error => console.log(error))
+    }
+}
+
+// can i delete this? think so
 export const searchCards = (query) => {
     // debugger;
     return dispatch => {
