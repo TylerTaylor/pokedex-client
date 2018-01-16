@@ -38,3 +38,16 @@
 
 .flex-item {
 }
+
+.search-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.view-icon-container {
+  /* width: 100px; */
+  display: flex;
+  justify-content: space-between;
+  flex: 0 0 100px;
+}

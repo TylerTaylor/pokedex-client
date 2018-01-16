@@ -9,6 +9,17 @@
     align-items: center;
 }
 
+.cards-flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.cards-flex-item {
+    width: 15%;
+    flex-shrink: 3;
+}
+
 .card-panel {
     /* width: 80%; */
     display: flex;
@@ -45,4 +56,9 @@
 .btn {
     text-transform: none;
     padding: 0 0.75rem;
+}
+
+.image-resize {
+    max-width: 100%;
+    max-height: 100%;
 }

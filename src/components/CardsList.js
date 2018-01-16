@@ -1,22 +1,38 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Collection, CollectionItem, Pagination, ProgressBar } from 'react-materialize';
+import { Collection, CollectionItem, Pagination, ProgressBar, Row, Col, Card } from 'react-materialize';
 import '../styles/cards-list.css'
 
 const CardsList = ({ cards, updateCards }) => {
 
-    // debugger;
+    // if we have cards, create this html and render it
     if (cards.cards && cards.cards.length > 0) {
-        let renderCards = cards.cards.map(card => 
-            // listgroupitem with key of card.id
-                // link with key of card.id to card show page, by name for now
-            // close list
-            <Collection key={ card.id }>
-                <Link key={ card.id } to={`/cards/${card.id}`} className="collection-item">
-                    { card.name } - { card.set }
-                </Link>
-            </Collection>
-        );
+        let renderCards;
+
+        if (cards.viewType == "list") {
+            renderCards = cards.cards.map(card => 
+                <Collection key={ card.id }>
+                    <Link key={ card.id } to={`/cards/${card.id}`} className="collection-item">
+                        { card.name } - { card.set }
+                    </Link>
+                </Collection>
+            );
+        } else if (cards.viewType == "grid") {  
+            renderCards = (
+                <div className="cards-flex-container">
+                    {cards.cards.map(card => 
+                        <div key={ card.id } className="cards-flex-item">
+                            <Card>
+                               <img src={card.image_url} className="image-resize"/>
+                               <br />
+                               { card.name } - { card.set }
+                           </Card>
+                        </div>
+                    )}
+                </div>
+            )
+        }
+
 
         let changePage = (event) => {
             updateCards(event)
@@ -25,10 +41,11 @@ const CardsList = ({ cards, updateCards }) => {
         return (
             <div className="cards-list">
                 { renderCards }
-                <Pagination items={cards.totalPages / 10} activePage={1} maxButtons={8} onSelect={changePage}/>
+                <Pagination items={cards.totalPages / 12} activePage={1} maxButtons={8} onSelect={changePage}/>
             </div>
         )
     } else {
+        // we don't have cards yet so show a loading bar
         return (
             <div>
                 <ProgressBar />

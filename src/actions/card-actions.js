@@ -37,6 +37,13 @@ const setCardInCollection = bool => {
     }
 }
 
+export const changeViewType = viewType => {
+    return {
+        type: 'SET_LIST_VIEW_TYPE',
+        viewType
+    }
+}
+
 // Aysnc Actions
 
 export const fetchCards = (query, pageNum) => {
@@ -111,6 +118,17 @@ export const addToCollection = (cardID, token) => {
             .catch(error => console.log(error))
     }
 }
+
+// export const changeViewType = viewType => {
+//     // return dispatch => {
+//     //     debugger;
+//     //     return dispatch(setListViewType(viewType))
+//     // }
+//     debugger;
+//     return dispatch = (viewType) => {
+//         debugger;
+//     }
+// }
 
 // can i delete this? think so
 export const searchCards = (query) => {

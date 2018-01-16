@@ -4,8 +4,9 @@ import { connect } from 'react-redux';
 // import CardsList from somewhere
 import CardsList from '../components/CardsList';
 // import action to fetch cards
-import { fetchCards } from '../actions/card-actions';
+import { fetchCards, changeViewType } from '../actions/card-actions';
 import Search from '../components/Search';
+import { Icon, Button } from 'react-materialize';
 import '../styles/cards.css';
 
 class CardsIndex extends Component {
@@ -42,7 +43,15 @@ class CardsIndex extends Component {
                     our search component, and buttons for view options (list, grid)
                     then we can add any sort / filter options on the right
                 */}
-                <Search />
+                <div className="search-container">
+                    <Search />
+
+                    <div className="view-icon-container">
+                        <Button waves='light' onClick={() => this.props.changeViewType("list") }><Icon large>view_list</Icon></Button>
+                        <Button waves='light' onClick={() => this.props.changeViewType("grid") }><Icon large>view_comfy</Icon></Button>
+                    </div>
+                </div>
+
                 <CardsList cards={ this.props.cards } updateCards={ this.updateCards } />
             </div>
         )
@@ -54,9 +63,10 @@ const mapStateToProps = (state) => {
     return ({
         cards: state.cards,
         query: state.search.query,
-        totalPages: state.totalPages
+        totalPages: state.totalPages,
+        viewType: state.cards.viewType
     })
 }
 
-export default connect(mapStateToProps, { fetchCards })(CardsIndex);
+export default connect(mapStateToProps, { fetchCards, changeViewType })(CardsIndex);
 // export default CardsIndex;

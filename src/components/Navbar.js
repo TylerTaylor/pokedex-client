@@ -15,7 +15,6 @@ class NavBar extends React.Component {
     constructor(props) {
         super(props)
 
-        // debugger;
         this.handleLogout = this.handleLogout.bind(this)
     }
 
@@ -30,19 +29,16 @@ class NavBar extends React.Component {
     }
 
     render() {
-        // debugger;
         return (
             // My component is NavBar, materialize navbar is "Navbar" lowercase b
             <Navbar brand='Pokedex' right>
+                {/* if our user is authenticated, show signout. else show signup/login */}
                 { this.props.isAuthenticated ? 
                     <NavLink to="/" onClick={this.handleLogout}>Sign Out</NavLink>
                 :
                     <div className="nav-links">
                         <NavLink to="/register">Sign Up</NavLink>
-                        <NavLink to="/login">Login</NavLink>
-                        {/* <NavItem href="/register">Sign Up</NavItem> */}
-                        {/* <NavItem><NavLink to="/login">Login</NavLink></NavItem> */}
-                        
+                        <NavLink to="/login">Login</NavLink>                        
                     </div>
                 }
             </Navbar>
