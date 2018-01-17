@@ -23,9 +23,11 @@ const CardsList = ({ cards, updateCards }) => {
                     {cards.cards.map(card => 
                         <div key={ card.id } className="cards-flex-item">
                             <Card>
-                               <img src={card.image_url} className="image-resize"/>
-                               <br />
-                               { card.name } - { card.set }
+                                <Link key={ card.id } to={`/cards/${card.id}`} className="collection-item">
+                                    <img src={card.image_url} className="image-resize"/>
+                                    <br />
+                                    { card.name } - { card.set }
+                                </Link>
                            </Card>
                         </div>
                     )}

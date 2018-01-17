@@ -36,6 +36,7 @@ class CardsIndex extends Component {
         debugger;
     }
 
+    
     render() {
         return (
             <div className="cards-index-container">
@@ -45,6 +46,10 @@ class CardsIndex extends Component {
                 */}
                 <div className="search-container">
                     <Search />
+                    {/* // TODO: We need a filter function
+                    //   hook this function up to a button / menu
+                    //     when button / menu is clicked or selected
+                    //       call this function and hit the backend with the appropriate query */}
 
                     <div className="view-icon-container">
                         <Button waves='light' onClick={() => this.props.changeViewType("list") }><Icon large>view_list</Icon></Button>

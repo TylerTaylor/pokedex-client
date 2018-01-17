@@ -17,7 +17,6 @@
 
 .cards-flex-item {
     width: 15%;
-    flex-shrink: 3;
 }
 
 .card-panel {
