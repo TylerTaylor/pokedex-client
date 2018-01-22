@@ -61,3 +61,22 @@
     max-width: 100%;
     max-height: 100%;
 }
+
+.filter-container .btn {
+    width: 140px;
+}
+
+.filter-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.filter-container span {
+    width: 150px;
+}
+
+.dropdown-content {
+    width: 110px;
+    /* display: flex;
+    justify-content: space-between; */
+}
