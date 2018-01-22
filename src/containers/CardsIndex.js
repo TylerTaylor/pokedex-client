@@ -50,13 +50,6 @@ class CardsIndex extends Component {
         // }
     }
 
-    // TODO:
-    // this should be handled in updateCards shouldnt it?
-    // too many unnecessary functions
-    handleFilter = (pageNum) => {
-        this.props.fetchCardsFiltered(this.props.cards.filters, pageNum)
-    }
-
     handleSortFilterChange = (event) => {
         event.preventDefault();
         let filter = event.target.text;
@@ -128,14 +121,6 @@ class CardsIndex extends Component {
                             <NavItem value="Series Oldest" onClick={this.handleSortFilterChange}>Series(oldest)</NavItem>
                         </Dropdown>
 
-                        {/* <Dropdown trigger={
-                            <Button>Filters</Button>
-                        }>
-                            <Row>
-                                <Input name='some_value' onChange={this.handleFilter} type='checkbox' value='Ancient Origins' label='Ancient Origins' />
-                                <Input name='some_value' onChange={this.handleFilter} type='checkbox' value='Sun & moon' label='Sun & Moon' />
-                            </Row>
-                        </Dropdown> */}
                         <Button onClick={this.handleFilterModal}>Filters</Button>
 
                         {/* Show our FilterModal here */}
