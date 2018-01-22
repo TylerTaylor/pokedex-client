@@ -1,7 +1,10 @@
 const initialState = {
     cards: null,
     totalPages: null,
-    viewType: "grid"
+    viewType: "grid",
+    sortBy: "Name A-Z",
+    showFilterModal: false,
+    filters: []
 }
 
 export default (state = initialState, action) => {
@@ -23,6 +26,21 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 viewType: action.viewType
+            }
+        case 'SET_SORT_BY_FILTER':
+            return {
+                ...state,
+                sortBy: action.filter
+            }
+        case 'TOGGLE_SHOW_FILTER_MODAL':
+            return {
+                ...state,
+                showFilterModal: !action.bool
+            }
+        case 'SET_FILTER_IN_STATE':
+            return {
+                ...state,
+                filters: [...state.filters, action.filter]
             }
         default:
             return state;
