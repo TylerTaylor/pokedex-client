@@ -75,7 +75,6 @@ export const fetchCards = (query, pageNum, sortFilter = null, filters = null) =>
     
     let filterParams;
     if (filters && filters.length > 0) {
-        debugger;
         filterParams = filters.join("/")
     }
 

@@ -28,26 +28,8 @@ class CardsIndex extends Component {
         this.props.fetchCards(null, null, this.props.sortBy)
     }
 
-    // TODO: This needs to also handle the filter
-
-    // for pagination. sends query to /api/cards with page number
     updateCards(pageNum) {
-        // TODO: we could probably shorten this to just one line of code now that fetchCards is a little smarter
         this.props.fetchCards(this.props.query, pageNum, this.props.sortBy, this.props.cards.filters)
-
-        // handle pagination with a search term and without
-        // if (this.props.query) {
-        //     debugger;
-        //     this.props.fetchCards(this.props.query, pageNum, this.props.sortBy)
-        // } else if (this.props.cards.filters.length > 0) {
-        //     debugger;
-        //     this.props.fetchCards(null, pageNum, null, this.props.cards.filters)
-        // } 
-        // else {
-        //     debugger;
-        //     // don't pass a query and it will just paginate normally
-        //     this.props.fetchCards(null, pageNum, this.props.sortBy)
-        // }
     }
 
     handleSortFilterChange = (event) => {
@@ -71,28 +53,9 @@ class CardsIndex extends Component {
 
                 <div className="search-container">
                     <Search />
-                    {/* // TODO: We need a filter function
-                    //   hook this function up to a button / menu
-                    //     when button / menu is clicked or selected
-                    //       call this function and hit the backend with the appropriate query */}
 
                     {/* Should I move this to its own component? */}
                     <div className="filter-container">
-                        <form>
-                            <select defaultValue="Name A-Z" onChange={this.handleSortFilterChange}>
-                                <option value="Name A-Z">Name A-Z</option>
-                                <option value="Name Z-A">Name Z-A</option>
-                                <option value="Number ASC">Number Ascending</option>
-                                <option value="Number DESC">Number Descending</option>
-                                <option value="Set A-Z">Set A-Z</option>
-                                <option value="Set Z-A">Set Z-A</option>
-                                <option value="Series A-Z">Series A-Z</option>
-                                <option value="Series Z-A">Series Z-A</option>
-                                <option value="Set Chronologic">Set Chronologic</option>
-                                <option value="Series Chronologic">Series Chronologic</option>
-                            </select>
-                        </form>
-
                         <Dropdown trigger={
                             <Button>{ this.props.sortBy }</Button>
                         }>
