@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Collection, CollectionItem, Pagination, ProgressBar, Row, Col, Card } from 'react-materialize';
+import { Collection, Pagination, ProgressBar, Card } from 'react-materialize';
 import '../styles/cards-list.css'
 
 const CardsList = ({ cards, updateCards }) => {
@@ -9,7 +9,7 @@ const CardsList = ({ cards, updateCards }) => {
     if (cards.cards && cards.cards.length > 0) {
         let renderCards;
 
-        if (cards.viewType == "list") {
+        if (cards.viewType === "list") {
             renderCards = cards.cards.map(card => 
                 <Collection key={ card.id }>
                     <Link key={ card.id } to={`/cards/${card.id}`} className="collection-item">
@@ -17,14 +17,14 @@ const CardsList = ({ cards, updateCards }) => {
                     </Link>
                 </Collection>
             );
-        } else if (cards.viewType == "grid") {  
+        } else if (cards.viewType === "grid") {  
             renderCards = (
                 <div className="cards-flex-container">
                     {cards.cards.map(card => 
                         <div key={ card.id } className="cards-flex-item">
                             <Card>
                                 <Link key={ card.id } to={`/cards/${card.id}`} className="collection-item">
-                                    <img src={card.image_url} className="image-resize"/>
+                                    <img src={card.image_url} className="image-resize" alt=""/>
                                     <br />
                                     { card.name } - { card.set }
                                 </Link>
