@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 // this is importing from our user service, want it to be from auth-actions now instead
-import { loginUser } from '../services/user';
+// import { loginUser } from '../services/user';
 
 import { login } from '../actions/auth-actions';
 
