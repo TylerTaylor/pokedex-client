@@ -10,11 +10,7 @@ class FilterModal extends React.Component {
 		//   we should be using redux to add this filter to our filters array (need to create this too)
 		this.props.addFilterToState(event.target.value)
 	}
-
-	updateFilters = () => {
-		// tell redux to query our DB with the filters we have selected and added to state with handleFilterChange()
-	}
-
+	
 	shouldBeChecked = name => {
 		if (this.props.filters.indexOf(name) > -1) {
 			return true
@@ -22,7 +18,7 @@ class FilterModal extends React.Component {
 			return false
 		}
 	}
-
+	
 	render() {
 		// Render nothing if the "show" prop is false
 		if (!this.props.show) {
@@ -60,10 +56,10 @@ class FilterModal extends React.Component {
 						onChange={event => this.handleFilterChange(event)}
 					>
 						<Row>
-							<Input type='checkbox' checked={this.shouldBeChecked('Ancient Origins')} value='Ancient Origins' ref='Ancient Origins' label='Ancient Origins' />
-							<Input type='checkbox' value='Sun & Moon' ref='Sun & Moon' label='Sun & Moon' />
-							<Input type='checkbox' value='Roaring Skies' ref='Roaring Skies' label='Roaring Skies' />
-							<Input type='checkbox' value='Crimson Invasion' ref='Crimson Invasion' label='Crimson Invasion' />
+							{/* iterate through filtersList and create checkbox for each filter */}
+							{this.props.filtersList.map((filter, index) => 
+								<Input key={index} checked={this.shouldBeChecked(filter)} type='checkbox' value={filter} label={filter}/>
+							)}
 						</Row>
 
 						<Button type='submit' value='submit'>Apply</Button>
