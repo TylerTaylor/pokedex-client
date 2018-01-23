@@ -13,7 +13,7 @@ export default (state = initialState, action) => {
         case 'SET_CARD_IN_COLLECTION':
             return {
                 ...state,
-                inCollection: true
+                inCollection: action.bool
             }
         default:
             return state;

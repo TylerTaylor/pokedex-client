@@ -147,11 +147,24 @@ export const fetchCards = (query, pageNum, sortFilter = null, filters = null) =>
     }
 }
 
-export const fetchCard = cardID => {
+export const fetchCard = (cardID, token) => {
     return dispatch => {
-        return fetch(`http://localhost:3000/api/v1/cards/${cardID}`)
+        return fetch(`http://localhost:3000/api/v1/cards/${cardID}`, {
+            headers: {
+                "Accept":"application/json",
+                "Content-Type":"application/json",
+                "Authorization":`Bearer: ${token}`
+            }
+        })
             .then(res => res.json())
-            .then(card => dispatch(setCard(card)))
+            .then(card => {
+                dispatch(setCard(card["card"]))
+                if(card["cardInCollection"]) {
+                    dispatch(setCardInCollection(true))
+                } else {
+                    dispatch(setCardInCollection(false))
+                }
+            })
             .catch(error => console.log(error))
     }
 }

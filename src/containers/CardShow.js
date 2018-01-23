@@ -7,7 +7,10 @@ class CardShow extends Component {
 
     componentDidMount() {
         // call fetchCard here
-        this.props.fetchCard(this.props.match.params.id)
+        let id = this.props.match.params.id;
+        let token = this.props.token;
+        // debugger;
+        this.props.fetchCard(id, token)
     }
 
     handleAddCard = () => {
