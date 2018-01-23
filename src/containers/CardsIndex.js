@@ -8,12 +8,12 @@ import {
     fetchCards, 
     changeViewType, 
     changeSortByFilter, 
-    toggleFilterModal,
-    fetchCardsFiltered
+    toggleFilterModal
 } from '../actions/card-actions';
 import Search from '../components/Search';
-import FilterModal from '../components/FilterModal';
-import { Icon, Button, Dropdown, NavItem, Input, Row } from 'react-materialize';
+// import FilterModal from '../components/FilterModal';
+import { Filters } from '../components/Filters';
+import { Icon, Button } from 'react-materialize';
 import '../styles/cards.css';
 
 class CardsIndex extends Component {
@@ -25,7 +25,9 @@ class CardsIndex extends Component {
     }
 
     componentDidMount() {
-        this.props.fetchCards(null, null, this.props.sortBy)
+        // TODO: can we do something with the pageNum here?
+        //   when on a later page (ie page 3) and you click a card, then go back, it resets to page 1
+        this.updateCards()
     }
 
     updateCards(pageNum) {
@@ -43,7 +45,7 @@ class CardsIndex extends Component {
     }
 
     handleFilterModal = () => {
-        // call a redux action to set our 'showFilterModal' property to true
+        // call a redux action to set our 'showFilterModal' property to true or false
         this.props.toggleFilterModal(this.props.showFilterModal)
     }
     
@@ -54,45 +56,8 @@ class CardsIndex extends Component {
                 <div className="search-container">
                     <Search />
 
-                    {/* Should I move this to its own component? */}
-                    <div className="filter-container">
-                        <Dropdown trigger={
-                            <Button>{ this.props.sortBy }</Button>
-                        }>
-                            <NavItem value="Name A-Z" onClick={this.handleSortFilterChange}>Name A-Z</NavItem>
-                            <NavItem divider />
-                            <NavItem value="Name Z-A" onClick={this.handleSortFilterChange}>Name Z-A</NavItem>
-                            <NavItem divider />
-                            <NavItem value="Number ASC" onClick={this.handleSortFilterChange}>Number(lowest)</NavItem>
-                            <NavItem divider />
-                            <NavItem value="Number DESC" onClick={this.handleSortFilterChange}>Number(highest)</NavItem>
-                            <NavItem divider />
-                            <NavItem value="Set A-Z" onClick={this.handleSortFilterChange}>Set A-Z</NavItem>
-                            <NavItem divider />
-                            <NavItem value="Set Z-A" onClick={this.handleSortFilterChange}>Set Z-A</NavItem>
-                            <NavItem divider />
-                            <NavItem value="Series A-Z" onClick={this.handleSortFilterChange}>Series A-Z</NavItem>
-                            <NavItem divider />
-                            <NavItem value="Series Z-A" onClick={this.handleSortFilterChange}>Series Z-A</NavItem>
-                            <NavItem divider />
-                            <NavItem value="Set Newest" onClick={this.handleSortFilterChange}>Set(newest)</NavItem>
-                            <NavItem divider />
-                            <NavItem value="Set Oldest" onClick={this.handleSortFilterChange}>Set(oldest)</NavItem>
-                            <NavItem divider />
-                            <NavItem value="Series Newest" onClick={this.handleSortFilterChange}>Series(newest)</NavItem>
-                            <NavItem divider />
-                            <NavItem value="Series Oldest" onClick={this.handleSortFilterChange}>Series(oldest)</NavItem>
-                        </Dropdown>
-
-                        <Button onClick={this.handleFilterModal}>Filters</Button>
-
-                        {/* Show our FilterModal here */}
-                        <FilterModal show={this.props.showFilterModal} onClose={this.handleFilterModal} updateFilters={this.updateCards}>
-                            <h3>Filters</h3>
-                        </FilterModal>
-                    </div>
-
-
+                    {/* it needs to pass through this.handleSortFilterChange to handle onClick */}                
+                    <Filters sortBy={this.props.sortBy} updateSortFilters={this.handleSortFilterChange} show={this.props.showFilterModal} onClick={this.handleFilterModal} onClose={this.handleFilterModal} updateFilters={this.updateCards}/>
 
                     <div className="view-icon-container">
                         <Button waves='light' onClick={() => this.props.changeViewType("list") }><Icon large>view_list</Icon></Button>
@@ -122,6 +87,5 @@ export default connect(mapStateToProps, {
     fetchCards, 
     changeViewType, 
     changeSortByFilter,
-    toggleFilterModal,
-    fetchCardsFiltered
+    toggleFilterModal
 })(CardsIndex);
