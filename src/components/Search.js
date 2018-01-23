@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Row, Input, Button } from 'react-materialize';
+import { Row, Input } from 'react-materialize';
 import { fetchCards } from '../actions/card-actions';
 
 class Search extends React.Component {
@@ -24,10 +24,6 @@ class Search extends React.Component {
             // feels like this sends too many requests
             this.props.fetchCards(null, null, this.props.sortBy)
         }
-        
-
-
-
     }
     
     render() {
