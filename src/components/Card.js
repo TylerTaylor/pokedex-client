@@ -1,12 +1,11 @@
 import React from 'react';
 import { CardPanel, Button } from 'react-materialize';
-import { Link } from 'react-router-dom';
 
 export const Card = ({ card, inCollection, add }) => (
 
     <CardPanel key={ card.id }>
         <div>
-            <img src={ card.image_url } />
+            <img src={ card.image_url } alt="" />
         </div>
 
         <div className="card-details">
