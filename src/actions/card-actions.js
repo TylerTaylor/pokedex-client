@@ -1,5 +1,3 @@
-// import { pokemon } from 'pokemontcgsdk';
-
 // Action Creators
 
 const setCards = cards => {
@@ -72,12 +70,6 @@ export const fetchCards = (query, pageNum, sortFilter = null, filters = null) =>
         pageNum = 1
     }
 
-    
-    let filterParams;
-    if (filters && filters.length > 0) {
-        filterParams = filters.join("/")
-    }
-
     let cardsAPI = 'http://localhost:3000/api/v1/cards';
 
     // the link NEEDS to be like:
@@ -102,7 +94,7 @@ export const fetchCards = (query, pageNum, sortFilter = null, filters = null) =>
         cardsAPI += `${op}sort_filter=${sortFilter}`
     }
 
-    if (filters) {
+    if (filters && filters.length > 0) {
         let op = '?';
         if (cardsAPI.lastIndexOf('?') > cardsAPI.lastIndexOf('&')) {
             op = '&'
@@ -265,26 +257,6 @@ export const addFilterToState = filter => {
     }
 }
 
-export const fetchCardsFiltered = (filters, pageNum) => {
-    if (pageNum === undefined) {
-        pageNum = 1
-    }
-    let params = filters.join('/')
-    return dispatch => {
-        return fetch(`http://localhost:3000/api/v1/cards/filter/${filters}?page=${pageNum}`)
-            .then(res => {
-                debugger;
-                // dispatch(setTotalPages(res.headers.get('Total')))
-                // return res.json()
-            })
-            .then(cards => {
-                debugger;
-                // dispatch(setCards(cards))
-            })
-            .catch(error => console.log(error))
-    }
-}
-
 // export const changeViewType = viewType => {
 //     // return dispatch => {
 //     //     debugger;
@@ -295,18 +267,3 @@ export const fetchCardsFiltered = (filters, pageNum) => {
 //         debugger;
 //     }
 // }
-
-// can i delete this? think so
-export const searchCards = (query) => {
-    // debugger;
-    return dispatch => {
-        // this route does not exist yet! make before running
-        return fetch(`http://localhost:3000/api/v1/search/${query}`)
-            .then(res => res.json())
-            .then(cards => {
-                dispatch(setCards(cards))
-                dispatch(setSearchQuery(query))
-            })
-            .catch(error => console.log(error))
-    }
-}
