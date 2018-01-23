@@ -123,8 +123,6 @@ export const fetchCards = (query, pageNum, sortFilter = null, filters = null) =>
         cardsAPI += `${op}page=${pageNum}`
     }
 
-    // cardsAPI += `&page=${pageNum}`
-
     // TODO: if we have no query, pagenum, sortfilter, or filters
     // the link should just be the original cardsAPI link with no additions
     // ? or &page=${pageNum} at the end of 'api/v1/cards' gives an error
@@ -147,67 +145,6 @@ export const fetchCards = (query, pageNum, sortFilter = null, filters = null) =>
             })
             .catch(error => console.log(error))
     }
-
-    // TODO: there has to be a cleaner way to do this
-
-    // handle a search query if it exists
-    // if (sortFilter) {
-    //     return dispatch => {
-    //         return fetch(`http://localhost:3000/api/v1/cards/filter/${sortFilter}?page=${pageNum}`)
-    //             .then(res => {
-    //                 dispatch(setTotalPages(res.headers.get('Total')))
-    //                 return res.json()
-    //             })
-    //             .then(cards => {
-    //                 dispatch(setCards(cards))
-    //             })
-    //             .catch(error => console.log(error))
-    //     }
-    // } 
-    // else if (filters.length > 0) {
-    //     return dispatch => {
-    //         return fetch(`http://localhost:3000/api/v1/cards/filter/${filters}?page=${pageNum}`)
-    //             .then(res => {
-    //                 dispatch(setTotalPages(res.headers.get('Total')))
-    //                 return res.json()
-    //             })
-    //             .then(cards => {
-    //                 dispatch(setCards(cards))
-    //             })
-    //             .catch(error => console.log(error))
-    //     }
-    // } 
-    // else if (query) {
-    //     return dispatch => {
-    //         return fetch(`http://localhost:3000/api/v1/search/${query}?page=${pageNum}`)
-    //             .then(res => {
-    //                 // we need to set our total page number here
-    //                 dispatch(setTotalPages(res.headers.get('Total')))
-    //                 return res.json()
-    //             })
-    //             .then(cards => {
-    //                 dispatch(setCards(cards))
-    //                 dispatch(setSearchQuery(query))
-    //                 // debugger;
-    //             })
-    //             .catch(error => console.log(error))
-    //     }
-    // } else {
-    //     return dispatch => {
-    //         return fetch(`http://localhost:3000/api/v1/cards?page=${pageNum}`)
-    //             .then(res => {
-    //                 // we also need to set totalPages here
-    //                 dispatch(setTotalPages(res.headers.get('Total')))
-    //                 return res.json()
-    //             })
-    //             .then(cards => {
-    //                 dispatch(setCards(cards))
-    //                 dispatch(setSearchQuery(null))
-    //             })
-    //             .catch(error => console.log(error))
-    //     }
-    // }
-
 }
 
 export const fetchCard = cardID => {
