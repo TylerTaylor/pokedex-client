@@ -63,6 +63,12 @@ const setFilterInState = filter => {
     }
 }
 
+const setFiltersToDefault = bool => {
+    return {
+        type: 'RESET_FILTERS',
+        bool
+    }
+}
 // Aysnc Actions
 
 export const fetchCards = (query, pageNum, sortFilter = null, filters = null) => {
@@ -96,13 +102,22 @@ export const fetchCards = (query, pageNum, sortFilter = null, filters = null) =>
 
     if (filters && filters.length > 0) {
         let op = '?';
-        if (cardsAPI.lastIndexOf('?') > cardsAPI.lastIndexOf('&')) {
-            op = '&'
+        // if (cardsAPI.lastIndexOf('?') > cardsAPI.lastIndexOf('&')) {
+        //     op = '&'
+        // }
+
+        let keywords = ["query_name", "sort_filter"]
+        let length = keywords.length
+
+        while(length--) {
+            if (cardsAPI.indexOf(keywords[length])!==-1) {
+                op = '&'
+            }
         }
-        
+
         let filterParams = filters.join(",")
         filterParams = encodeURIComponent(filterParams)
-        // debugger;
+
         cardsAPI += `${op}filters=${filterParams}`
         // Why does this old way work? why do filters come in as a string like "Crimson Invasion, Sun & Moon"?
         //   while the new attempt (line 114) breaks it up on the &?
@@ -201,9 +216,15 @@ export const toggleFilterModal = bool => {
     }
 }
 
-export const addFilterToState = filter => {
+export const manageFilterInState = filter => {
     return dispatch => {
         return dispatch(setFilterInState(filter))
+    }
+}
+
+export const resetFilters = () => {
+    return dispatch => {
+        return dispatch(setFiltersToDefault(true))
     }
 }
 
