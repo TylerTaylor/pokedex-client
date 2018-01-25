@@ -7,6 +7,10 @@ const initialState = {
     filters: []
 }
 
+// manageFilter = (stateFilters, filter) => {
+
+// }
+
 export default (state = initialState, action) => {
     switch(action.type) {
         case 'GET_CARDS_SUCCESS':
@@ -38,9 +42,23 @@ export default (state = initialState, action) => {
                 showFilterModal: !action.bool
             }
         case 'SET_FILTER_IN_STATE':
+            if (state.filters.indexOf(action.filter) > -1) {
+                // we have the filter already, remove it
+                return {
+                    ...state,
+                    filters: state.filters.filter(x => action.filter !== x)
+                }
+            } else {
+                // we don't have this filter in state, so add it
+                return {
+                    ...state,
+                    filters: [...state.filters, action.filter]
+                }
+            }
+        case 'RESET_FILTERS':
             return {
                 ...state,
-                filters: [...state.filters, action.filter]
+                filters: []
             }
         default:
             return state;
