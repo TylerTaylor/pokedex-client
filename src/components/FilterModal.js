@@ -1,16 +1,20 @@
 import React from 'react';
 import { Row, Input, Button } from 'react-materialize';
 import { connect } from 'react-redux';
-import { addFilterToState } from '../actions/card-actions';
+import { manageFilterInState, resetFilters } from '../actions/card-actions';
 
 class FilterModal extends React.Component {
     
 	handleFilterChange = event => {
 		// every time this function gets called
 		//   we should be using redux to add this filter to our filters array (need to create this too)
-		this.props.addFilterToState(event.target.value)
+		this.props.manageFilterInState(event.target.value)
 	}
 	
+	handleFilterReset = () => {
+		this.props.resetFilters()
+	}
+
 	shouldBeChecked = name => {
 		if (this.props.filters.indexOf(name) > -1) {
 			return true
@@ -55,14 +59,20 @@ class FilterModal extends React.Component {
 						onSubmit={(event) => {this.props.onClose(); this.props.updateFilters()}}
 						onChange={event => this.handleFilterChange(event)}
 					>
-						<Row>
+						<p>By set:</p>
+						<div className="set-filters-container">
 							{/* iterate through filtersList and create checkbox for each filter */}
 							{this.props.filtersList.map((filter, index) => 
-								<Input key={index} checked={this.shouldBeChecked(filter)} type='checkbox' value={filter} label={filter}/>
+								<Row>
+										<Input key={index} checked={this.shouldBeChecked(filter)} type='checkbox' value={filter} label={filter}/>
+								</Row>
 							)}
-						</Row>
+						</div>
 
-						<Button type='submit' value='submit'>Apply</Button>
+						<div className="button-group">
+							<Button onClick={this.handleFilterReset}>Reset</Button>
+							<Button type='submit' value='submit'>Apply</Button>
+						</div>
 					</form>
 				</div>
 			</div>
@@ -76,4 +86,4 @@ const mapStateToProps = (state) => {
 	})
 }
 
-export default connect(mapStateToProps, { addFilterToState })(FilterModal);
+export default connect(mapStateToProps, { manageFilterInState, resetFilters })(FilterModal);
