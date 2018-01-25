@@ -13,16 +13,16 @@ class Search extends React.Component {
 
     handleInput(event) {
         let query = event.target.value
-        // debugger;
+
         // if query >= 3 then run a search
         if (query.length >= 3) {
-            this.props.fetchCards(query, null, this.props.sortBy)
+            this.props.fetchCards(query, null, this.props.sortBy, this.props.filters)
         } else {
             // if user deletes some keys or clears the search field
             //   reset it to the original query
             //     should i store the original query somewhere or just another request? 
             // feels like this sends too many requests
-            this.props.fetchCards(null, null, this.props.sortBy)
+            this.props.fetchCards(null, null, this.props.sortBy, this.props.filters)
         }
     }
     
@@ -40,7 +40,8 @@ class Search extends React.Component {
 const mapStateToProps = (state) => {
     return ({
         cards: state.cards,
-        sortBy: state.cards.sortBy
+        sortBy: state.cards.sortBy,
+        filters: state.cards.filters
     })
 }
 
