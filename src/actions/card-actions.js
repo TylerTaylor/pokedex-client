@@ -56,6 +56,13 @@ const handleToggleFilterModal = bool => {
     }
 }
 
+const handleToggleCardModal = bool => {
+    return {
+        type: 'TOGGLE_SHOW_CARD_MODAL',
+        bool
+    }
+}
+
 const setFilterInState = filter => {
     return {
         type: 'SET_FILTER_IN_STATE',
@@ -69,6 +76,14 @@ const setFiltersToDefault = bool => {
         bool
     }
 }
+
+const destroyCard = card => {
+    return {
+        type: 'REMOVE_CARD_SUCCESS',
+        card
+    }
+}
+
 // Aysnc Actions
 
 export const fetchCards = (query, pageNum, sortFilter = null, filters = null) => {
@@ -184,6 +199,26 @@ export const fetchCard = (cardID, token) => {
     }
 }
 
+export const fetchCollection = (token) => {
+    // we need to hit an API route that returns the cards from the user's collection
+    // we'll need to pass the token as an Authorization header like in the fetchCard function above
+    return dispatch => {
+        return fetch(`http://localhost:3000/api/v1/collection`, {
+            headers: {
+                "Accept":"application/json",
+                "Content-Type":"application/json",
+                "Authorization":`Bearer: ${token}`
+            }
+        })
+            .then(res => res.json())
+            .then(cards => {
+                // once we get the data back, dispatch to the appropriate function
+                dispatch(setCards(cards))
+            })
+            .catch(error => console.log(error))
+    }
+}
+
 export const addToCollection = (cardID, token) => {
     return dispatch => {
         return fetch(`http://localhost:3000/api/v1/cards/${cardID}/add`, {
@@ -210,9 +245,37 @@ export const addToCollection = (cardID, token) => {
     }
 }
 
+export const removeFromCollection = (cardID, token) => {
+    return dispatch => {
+        return fetch(`http://localhost:3000/api/v1/cards/${cardID}`, {
+            method: 'delete',
+            headers: {
+                "Accept":"application/json",
+                "Content-Type":"application/json",
+                "Authorization":`Bearer: ${token}`
+            }
+        })
+            .then(res => res.json())
+            .then(response => {
+                if (response.cardInCollection === false) {
+                    return dispatch(setCardInCollection(false))
+                }
+                // dispatch(destroyCard(card))
+                // dispatch(setCardInCollection())
+            })
+            .catch(error => console.log(error))
+    }
+}
+
 export const toggleFilterModal = bool => {
     return dispatch => {
         return dispatch(handleToggleFilterModal(bool))
+    }
+}
+
+export const toggleCardModal = bool => {
+    return dispatch => {
+        return dispatch(handleToggleCardModal(bool))
     }
 }
 
