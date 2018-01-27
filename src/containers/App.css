@@ -70,3 +70,13 @@
 .modal-display h3 {
   margin-top: 0px;
 }
+
+.card-show-expand {
+  cursor: -moz-zoom-in;
+  cursor: -webkit-zoom-in;
+  cursor: zoom-in;
+}
+
+.white-text {
+  color: white;
+}
