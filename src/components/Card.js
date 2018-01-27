@@ -1,11 +1,13 @@
 import React from 'react';
 import { CardPanel, Button } from 'react-materialize';
+import CardModal from './CardModal';
 
-export const Card = ({ card, inCollection, add }) => (
+export const Card = ({ card, inCollection, add, remove, showModal, show }) => (
 
     <CardPanel key={ card.id }>
-        <div>
-            <img src={ card.image_url } alt="" />
+        <div onClick={showModal}>
+            <img src={ card.image_url } alt="" className="card-show-expand"/>
+            <CardModal show={show} card={card}/>
         </div>
 
         <div className="card-details">
@@ -31,7 +33,7 @@ export const Card = ({ card, inCollection, add }) => (
                 { !inCollection ?
                     <Button onClick={add}>Add to Collection</Button>
                   :
-                    <Button>In Your Collection!</Button>
+                    <Button onClick={remove}>In Your Collection!</Button>
                 }
             </div>
         </div>
