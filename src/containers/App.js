@@ -14,6 +14,7 @@ import LoginForm from '../components/LoginForm'
 import RegisterForm from '../components/RegisterForm'
 import CardsIndex from './CardsIndex'
 import CardShow from './CardShow'
+import Collection from '../containers/Collection'
 
 import { authenticate, authFailure } from '../actions/auth-actions';
 
@@ -60,6 +61,7 @@ class App extends Component {
 
           <Route exact path="/cards/:id" component={ CardShow } />
           <Route exact path="/cards" component={ CardsIndex } />
+          <Route exact path="/collection" component={ Collection } />
         </div>
       </Router>
     );
