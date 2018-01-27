@@ -57,7 +57,12 @@ class CardsIndex extends Component {
                     <Search />
 
                     {/* it needs to pass through this.handleSortFilterChange to handle onClick */}                
-                    <Filters sortBy={this.props.sortBy} updateSortFilters={this.handleSortFilterChange} show={this.props.showFilterModal} onClick={this.handleFilterModal} onClose={this.handleFilterModal} updateFilters={this.updateCards}/>
+                    <Filters sortBy={this.props.sortBy} 
+                             updateSortFilters={this.handleSortFilterChange} 
+                             show={this.props.showFilterModal} 
+                             onClick={this.handleFilterModal} 
+                             onClose={this.handleFilterModal} 
+                             updateFilters={this.updateCards}/>
 
                     <div className="view-icon-container">
                         <Button waves='light' onClick={() => this.props.changeViewType("list") }><Icon large>view_list</Icon></Button>
