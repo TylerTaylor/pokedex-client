@@ -16,8 +16,19 @@ class Welcome extends React.Component {
                         <p>We have no user info here :(</p>
                     </div>
                 }
+
+                <div className="container">
+                    <p>
+                        Your Pokedex is a place where you can keep track of the Pokemon cards in your collection.
+                        This is a work in progress, but for now you can search by name, and filter by set. More features
+                        coming soon, like Advanced Search, deck builders, etc.
+                    </p>
+                </div>
+
+                <br />
+
                 {/* <Button waves="light" node="a" href="/cards">View All Cards</Button> */}
-                <Button waves="light"><Link to="/cards">View All Cards</Link></Button>
+                <Button waves="light"><Link to="/cards" className="white-text">View All Cards</Link></Button>
 
             </div>
         );
