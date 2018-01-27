@@ -1,6 +1,7 @@
 const initialState = {
     card: {},
-    inCollection: false
+    inCollection: false,
+    showCardModal: false
 }
 
 export default (state = initialState, action) => {
@@ -14,6 +15,16 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 inCollection: action.bool
+            }
+        case 'REMOVE_CARD_SUCCESS':
+            return {
+                ...state,
+                card: action.card
+            }
+        case 'TOGGLE_SHOW_CARD_MODAL':
+            return {
+                ...state,
+                showCardModal: !action.bool
             }
         default:
             return state;
