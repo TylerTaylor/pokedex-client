@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Navbar } from 'react-materialize';
 import PropTypes from 'prop-types';
-import './Navbar.css'
+import '../styles/Navbar.css'
 
 
 type Props = {
@@ -34,7 +34,10 @@ class NavBar extends React.Component {
             <Navbar brand='Pokedex' right>
                 {/* if our user is authenticated, show signout. else show signup/login */}
                 { this.props.isAuthenticated ? 
-                    <NavLink to="/" onClick={this.handleLogout}>Sign Out</NavLink>
+                    <div className="nav-links">
+                        <NavLink to="/collection">Collection</NavLink>
+                        <NavLink to="/" onClick={this.handleLogout}>Sign Out</NavLink>
+                    </div>
                 :
                     <div className="nav-links">
                         <NavLink to="/register">Sign Up</NavLink>
