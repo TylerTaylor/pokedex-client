@@ -195,18 +195,25 @@ export const fetchCard = (cardID, token) => {
     }
 }
 
-export const fetchCollection = (token) => {
+export const fetchCollection = (token, pageNum) => {
+    if (pageNum === undefined || pageNum === null) {
+        pageNum = 1
+    }
+
     // we need to hit an API route that returns the cards from the user's collection
     // we'll need to pass the token as an Authorization header like in the fetchCard function above
     return dispatch => {
-        return fetch(`http://localhost:3000/api/v1/collection`, {
+        return fetch(`http://localhost:3000/api/v1/collection?page=${pageNum}`, {
             headers: {
                 "Accept":"application/json",
                 "Content-Type":"application/json",
                 "Authorization":`Bearer: ${token}`
             }
         })
-            .then(res => res.json())
+            .then(res => {
+                dispatch(setTotalPages(res.headers.get('Total')))
+                return res.json()
+            })
             .then(cards => {
                 // once we get the data back, dispatch to the appropriate function
                 dispatch(setCards(cards))
@@ -233,7 +240,6 @@ export const addToCollection = (cardID, token) => {
                 //   become disabled / say "In your collection" or something
                 if (response.cardInCollection === true) {
                     // rails told us the current user has this card in their collection
-                    debugger;
                     return dispatch(setCardInCollection(true))
                 }
             })
