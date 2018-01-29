@@ -7,7 +7,7 @@ class Welcome extends React.Component {
     render() {
         // debugger;
         return (
-            <div className="center">
+            <div className="welcome center container">
                 { this.props.currentUser ? 
                     <h1>Welcome to Pokedex, {this.props.currentUser}</h1>
                 :
@@ -17,7 +17,7 @@ class Welcome extends React.Component {
                     </div>
                 }
 
-                <div className="container">
+                <div>
                     <p>
                         Your Pokedex is a place where you can keep track of the Pokemon cards in your collection.
                         This is a work in progress, but for now you can search by name, and filter by set. More features

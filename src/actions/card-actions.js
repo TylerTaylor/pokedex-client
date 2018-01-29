@@ -134,9 +134,6 @@ export const fetchCards = (query, pageNum, sortFilter = null, filters = null) =>
         filterParams = encodeURIComponent(filterParams)
 
         cardsAPI += `${op}filters=${filterParams}`
-        // Why does this old way work? why do filters come in as a string like "Crimson Invasion, Sun & Moon"?
-        //   while the new attempt (line 114) breaks it up on the &?
-        // cardsAPI = `http://localhost:3000/api/v1/cards/filter/${filters}?page=${pageNum}`
     }
 
     // ADD &page=${pageNum} to end of cardsAPI!
@@ -169,9 +166,8 @@ export const fetchCards = (query, pageNum, sortFilter = null, filters = null) =>
             })
             .then(cards => {
                 dispatch(setCards(cards))
-                if (query) {
-                    dispatch(setSearchQuery(query))
-                }
+                // If we have a query, set it, otherwise it will go back to null
+                dispatch(setSearchQuery(query))
             })
             .catch(error => console.log(error))
     }
