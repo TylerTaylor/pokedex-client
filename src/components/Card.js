@@ -4,7 +4,7 @@ import CardModal from './CardModal';
 
 export const Card = ({ card, inCollection, add, remove, showModal, show }) => (
 
-    <CardPanel key={ card.id }>
+    <CardPanel key={ card.id } className="grey lighten-3 card-panel">
         <div onClick={showModal}>
             <img src={ card.image_url } alt="" className="card-show-expand"/>
             <CardModal show={show} card={card}/>
