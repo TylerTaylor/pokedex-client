@@ -42,9 +42,9 @@ export const signup = (user, router) => {
         })
             .then(res => res.json())
             .then(response => {
-                const { user, token } = response
-                localStorage.setItem('token', token)
-                dispatch(authSuccess(user, token))
+                const { user, jwt } = response
+                localStorage.setItem('token', jwt)
+                dispatch(authSuccess(user, jwt))
                 dispatch(reset('signup'))
                 router.history.replace('/')
             })
