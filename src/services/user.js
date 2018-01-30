@@ -1,7 +1,7 @@
 export function loginUser(loginParams) {
     const body = JSON.stringify(loginParams)
     
-    return fetch("http://localhost:3000/login", {
+    return fetch("http://mondex-api.herokuapp.com/login", {
         method: 'post',
         body: body,
         headers: {

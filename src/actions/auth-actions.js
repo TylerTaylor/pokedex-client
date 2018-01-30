@@ -32,7 +32,7 @@ export const signup = (user, router) => {
     return dispatch => {
         dispatch(authRequest())
         
-        return fetch('http://localhost:3000/users', {
+        return fetch('http://mondex-api.herokuapp.com/users', {
             method: 'post',
             body: body,
             headers: {
@@ -63,7 +63,7 @@ export const login = (user, router) => {
     return dispatch => {
         dispatch(authRequest());
 
-        return fetch("http://localhost:3000/login", {
+        return fetch("http://mondex-api.herokuapp.com/login", {
             method: 'post',
             body: body,
             headers: {
@@ -98,7 +98,7 @@ export const authenticate = (token) => {
             'Authorization': `Bearer: ${token}`
         }
 
-        return fetch('http://localhost:3000/auth/refresh', {
+        return fetch('http://mondex-api.herokuapp.com/auth/refresh', {
             method: 'post',
             headers: headers,
             body: JSON.stringify({})
