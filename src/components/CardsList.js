@@ -26,8 +26,9 @@ const CardsList = ({ cards, updateCards }) => {
                                 <Link key={ card.id } to={`/cards/${card.id}`} className="collection-item">
                                     <img src={card.image_url} className="image-resize" alt=""/>
                                     <br />
-                                    { card.name } - { card.set }
+
                                 </Link>
+                                <p><b>{ card.name }</b></p>
                            </Card>
                         </div>
                     )}

@@ -86,6 +86,11 @@
     margin-top: 40px;
 }
 
+.card .card-content p {
+    letter-spacing: 1px;
+    color: #313131;
+}
+
 /* .hidden {
     display: none;
 } */
