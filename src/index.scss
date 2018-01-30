@@ -1,0 +1,11 @@
+@media #{$medium-and-down} {
+    // styles for medium screens and down
+    .search-container {
+        justify-content: space-evenly;
+    }
+
+    .filter-container {
+        display: block;
+    }
+
+}
