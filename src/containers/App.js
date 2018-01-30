@@ -30,7 +30,7 @@ class App extends Component {
   props: Props
 
   componentDidMount() {
-    fetch("http://mondex-api.herokuapp.com/welcome")
+    fetch("https://mondex-api.herokuapp.com/welcome")
       .then((res) => res.json())
       .then((json) => {
         console.log(json)
