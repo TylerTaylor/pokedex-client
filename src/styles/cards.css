@@ -140,7 +140,7 @@
     .filter-container {
         display: flex;
         justify-content: center;
-        font-size: 1em;
+        font-size: 15px;
     }
     
     .filter-container span {
