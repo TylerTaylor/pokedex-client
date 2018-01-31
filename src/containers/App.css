@@ -1,82 +1,86 @@
-.App {
-  /* text-align: center; */
-  /* This was breaking the materialize navbar alignment... should probably sort it out */
-  /* padding-left: 20px; */
-}
+@media screen and (min-width: 1000px) {
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
+  .App {
+    /* text-align: center; */
+    /* This was breaking the materialize navbar alignment... should probably sort it out */
+    /* padding-left: 20px; */
+  }
+  
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+    height: 80px;
+  }
+  
+  .App-header {
+    background-color: #222;
+    height: 150px;
+    padding: 20px;
+    color: white;
+  }
+  
+  .App-title {
+    font-size: 1.5em;
+  }
+  
+  .App-intro {
+    font-size: large;
+  }
+  
+  @keyframes App-logo-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  
+  .login-form, .signup-form {
+    text-align: center;
+    display: flex;
+    /* justify-content: center; */
+    flex-direction: column;
+  }
+  
+  .flex-item {
+  }
+  
+  .search-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .view-icon-container {
+    /* width: 100px; */
+    display: flex;
+    justify-content: space-between;
+    flex: 0 0 100px;
+  }
+  
+  .button-group {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .set-filters-container {
+    height: 300px;
+    width: 210px;
+    padding-top: 10px;
+    margin-bottom: 20px;
+    overflow: auto;
+    border: 1px solid rgb(192, 192, 192);
+    border-radius: 5px;
+  }
+  
+  .modal-display h3 {
+    margin-top: 0px;
+  }
+  
+  .card-show-expand {
+    cursor: -moz-zoom-in;
+    cursor: -webkit-zoom-in;
+    cursor: zoom-in;
+  }
+  
+  .white-text {
+    color: white;
+  }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-.login-form, .signup-form {
-  text-align: center;
-  display: flex;
-  /* justify-content: center; */
-  flex-direction: column;
-}
-
-.flex-item {
-}
-
-.search-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.view-icon-container {
-  /* width: 100px; */
-  display: flex;
-  justify-content: space-between;
-  flex: 0 0 100px;
-}
-
-.button-group {
-  display: flex;
-  justify-content: space-between;
-}
-
-.set-filters-container {
-  height: 300px;
-  width: 210px;
-  padding-top: 10px;
-  margin-bottom: 20px;
-  overflow: auto;
-  border: 1px solid rgb(192, 192, 192);
-  border-radius: 5px;
-}
-
-.modal-display h3 {
-  margin-top: 0px;
-}
-
-.card-show-expand {
-  cursor: -moz-zoom-in;
-  cursor: -webkit-zoom-in;
-  cursor: zoom-in;
-}
-
-.white-text {
-  color: white;
-}
+} /* end media query for laptops/desktops */

@@ -1,13 +1,4 @@
-.cards-index-container {
-    margin: 0 auto;
-    width: 85%;
-}
-
-.card-flex-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+/* Start with smaller devices */
 
 .cards-flex-container {
     display: flex;
@@ -17,80 +8,165 @@
 
 .cards-flex-item {
     margin: 10px;
-    width: 15%;
-}
-
-.card-panel {
-    /* width: 80%; */
-    display: flex;
-    justify-content: space-around;
-    align-items: flex-start;
-}
-
-.card-panel h1 {
-    margin-top: 0px;
-    margin-bottom: -10px;
-}
-
-.card-details {
-    padding-left: 50px;
-    width: 400px;
-    /* display: flex;
-    flex-direction: column; */
-}
-
-.card-details p {
-    margin: 0px;
-}
-
-.bold {
-    font-weight: bold;
-}
-
-.button-container {
-    margin-top: 4rem;
-    display: flex;
-    justify-content: space-around;
-}
-
-.btn {
-    text-transform: none;
-    padding: 0 0.75rem;
+    width: Calc(50% - 20px);
 }
 
 .image-resize {
     max-width: 100%;
-    max-height: 100%;
+    /* max-height: 100%; */
 }
 
-.filter-container .btn {
-    width: 140px;
+.card .card-content {
+    padding: 8px;
+}
+
+.search-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8em;
 }
 
 .filter-container {
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    justify-content: flex-start;
 }
 
-.filter-container span {
-    width: 150px;
+.view-icon-container {
+    /* flex-grow: 1; */
 }
 
-.dropdown-content {
-    width: 110px;
-    /* display: flex;
-    justify-content: space-between; */
+.filter-container button {
+    margin: 5px;
 }
 
-.card-panel {
-    margin-top: 40px;
+.view-icon-container button {
+    margin: 5px;
 }
 
-.card .card-content p {
-    letter-spacing: 1px;
-    color: #313131;
+.btn, .btn-large, .btn-floating, .btn-flat {
+    padding: 0 0.75rem;
 }
 
-/* .hidden {
-    display: none;
-} */
+/* For devices 550px and up */
+@media screen and (min-width: 550px) {
+    .cards-flex-item {
+        margin: 10px;
+        width: Calc(33% - 20px);
+    }
+}
+
+/* For devices 860px and up */
+@media screen and (min-width: 860px) {
+    .cards-flex-item {
+        margin: 10px;
+        width: Calc(25% - 20px);
+    }
+
+    .filter-container {
+        flex-grow: 1;
+    }
+}
+
+/* For devices 1000px and up */
+@media screen and (min-width: 1000px) {
+    
+    .cards-index-container {
+        margin: 0 auto;
+        width: 85%;
+    }
+    
+    .card-flex-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .cards-flex-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+    }
+    
+    .cards-flex-item {
+        margin: 10px;
+        width: Calc(16% - 20px);
+    }
+    
+    .card-panel {
+        /* width: 80%; */
+        display: flex;
+        justify-content: space-around;
+        align-items: flex-start;
+    }
+    
+    .card-panel h1 {
+        margin-top: 0px;
+        margin-bottom: -10px;
+    }
+    
+    .card-details {
+        padding-left: 50px;
+        width: 400px;
+        /* display: flex;
+        flex-direction: column; */
+    }
+    
+    .card-details p {
+        margin: 0px;
+    }
+    
+    .bold {
+        font-weight: bold;
+    }
+    
+    .button-container {
+        margin-top: 4rem;
+        display: flex;
+        justify-content: space-around;
+    }
+    
+    .btn {
+        text-transform: none;
+        padding: 0 0.75rem;
+    }
+    
+    .image-resize {
+        max-width: 100%;
+        max-height: 100%;
+    }
+    
+    .filter-container .btn {
+        width: 140px;
+    }
+    
+    .filter-container {
+        display: flex;
+        /* justify-content: space-between; */
+    }
+    
+    .filter-container span {
+        width: 150px;
+    }
+    
+    .dropdown-content {
+        width: 110px;
+        /* display: flex;
+        justify-content: space-between; */
+    }
+    
+    .card-panel {
+        margin-top: 40px;
+    }
+    
+    .card .card-content p {
+        letter-spacing: 1px;
+        color: #313131;
+    }
+    
+    /* .hidden {
+        display: none;
+    } */
+
+}
