@@ -1,3 +1,22 @@
+.set-filters-container {
+  height: 300px;
+  width: 210px;
+  padding-top: 10px;
+  margin-bottom: 20px;
+  overflow: auto;
+  border: 1px solid rgb(192, 192, 192);
+  border-radius: 5px;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+}
+
+.modal-display h3 {
+  margin-top: 0;
+}
+
 @media screen and (min-width: 1000px) {
 
   .App {
@@ -52,22 +71,7 @@
     display: flex;
     justify-content: space-between;
     flex: 0 0 100px;
-  }
-  
-  .button-group {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .set-filters-container {
-    height: 300px;
-    width: 210px;
-    padding-top: 10px;
-    margin-bottom: 20px;
-    overflow: auto;
-    border: 1px solid rgb(192, 192, 192);
-    border-radius: 5px;
-  }
+  } 
   
   .modal-display h3 {
     margin-top: 0px;
