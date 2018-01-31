@@ -64,7 +64,7 @@ class CardsIndex extends Component {
                              onClose={this.handleFilterModal} 
                              updateFilters={this.updateCards}/>
 
-                    <div className="view-icon-container">
+                    <div className="view-icon-container hide-on-small-and-down">
                         <Button waves='light' onClick={() => this.props.changeViewType("list") }><Icon large>view_list</Icon></Button>
                         <Button waves='light' onClick={() => this.props.changeViewType("grid") }><Icon large>view_comfy</Icon></Button>
                     </div>
