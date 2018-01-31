@@ -33,10 +33,6 @@
     justify-content: flex-start;
 }
 
-.view-icon-container {
-    /* flex-grow: 1; */
-}
-
 .filter-container button {
     margin: 5px;
 }
