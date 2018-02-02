@@ -36,9 +36,11 @@ class CardModal extends React.Component {
         }
 
         return(
-            <div className="modal-backdrop" style={backdropStyle}>
-                <div className="modal-display" style={modalStyle}>
+            <div className="modal-backdrop">
+                <div className="modal-display">
                     <img src={this.props.card.image_url_hi_res} alt="" style={imgStyle} />
+                    <p className="hide-on-small-and-down">Click anywhere to close</p>
+                    <p className="hide-on-med-and-up">Tap anywhere to close</p>
                 </div>
             </div>
         )

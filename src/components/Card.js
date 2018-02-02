@@ -15,8 +15,7 @@ export const Card = ({ card, inCollection, add, remove, showModal, show }) => (
             <p>
                 <small><em>{ card.supertype } - { card.subtype }</em></small>
             </p>
-            
-            <br/>
+            <br className="hide-on-med-and-down"/>
             <span><b>Series - Set: </b>{ card.series } - { card.set }</span>
             <br/>
             <span><b>Number: </b>{ card.number }</span>
@@ -29,7 +28,8 @@ export const Card = ({ card, inCollection, add, remove, showModal, show }) => (
 
             {/* In the CardShow container we need to send down a dispatch action or two here */}
             <div className="button-container">
-                <Button>Add to Wishlist</Button>
+                {/* Wishlist doesn't exist yet */}
+                {/* <Button>Add to Wishlist</Button> */}
                 { !inCollection ?
                     <Button onClick={add}>Add to Collection</Button>
                   :

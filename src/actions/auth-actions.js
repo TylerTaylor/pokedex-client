@@ -32,7 +32,7 @@ export const signup = (user, router) => {
     return dispatch => {
         dispatch(authRequest())
         
-        return fetch('https://mondex-api.herokuapp.com/users', {
+        return fetch('https://mysterious-island-27050.herokuapp.com/users', {
             method: 'post',
             body: body,
             headers: {
@@ -63,7 +63,7 @@ export const login = (user, router) => {
     return dispatch => {
         dispatch(authRequest());
 
-        return fetch("https://mondex-api.herokuapp.com/login", {
+        return fetch("https://mysterious-island-27050.herokuapp.com/login", {
             method: 'post',
             body: body,
             headers: {
@@ -98,7 +98,7 @@ export const authenticate = (token) => {
             'Authorization': `Bearer: ${token}`
         }
 
-        return fetch('https://mondex-api.herokuapp.com/auth/refresh', {
+        return fetch('https://mysterious-island-27050.herokuapp.com/auth/refresh', {
             method: 'post',
             headers: headers,
             body: JSON.stringify({})
