@@ -91,10 +91,10 @@ export const fetchCards = (query, pageNum, sortFilter = null, filters = null) =>
         pageNum = 1
     }
 
-    let cardsAPI = 'https://mysterious-island-27050.herokuapp.com/api/v1/cards';
+    let cardsAPI = 'https://mondex-api.herokuapp.com/api/v1/cards';
 
     // the link NEEDS to be like:
-    // https://mysterious-island-27050.herokuapp.com/api/v1/cards?firstParam&subsequentParams
+    // https://mondex-api.herokuapp.com/api/v1/cards?firstParam&subsequentParams
     // ? first then &
 
     if (query) {
@@ -155,7 +155,7 @@ export const fetchCards = (query, pageNum, sortFilter = null, filters = null) =>
     // ? or &page=${pageNum} at the end of 'api/v1/cards' gives an error
 
     if (!query && !pageNum && !sortFilter && !filters) {
-        cardsAPI = 'https://mysterious-island-27050.herokuapp.com/api/v1/cards'
+        cardsAPI = 'https://mondex-api.herokuapp.com/api/v1/cards'
     }
 
     return dispatch => {
@@ -175,7 +175,7 @@ export const fetchCards = (query, pageNum, sortFilter = null, filters = null) =>
 
 export const fetchCard = (cardID, token) => {
     return dispatch => {
-        return fetch(`https://mysterious-island-27050.herokuapp.com/api/v1/cards/${cardID}`, {
+        return fetch(`https://mondex-api.herokuapp.com/api/v1/cards/${cardID}`, {
             headers: {
                 "Accept":"application/json",
                 "Content-Type":"application/json",
@@ -203,7 +203,7 @@ export const fetchCollection = (token, pageNum) => {
     // we need to hit an API route that returns the cards from the user's collection
     // we'll need to pass the token as an Authorization header like in the fetchCard function above
     return dispatch => {
-        return fetch(`https://mysterious-island-27050.herokuapp.com/api/v1/collection?page=${pageNum}`, {
+        return fetch(`https://mondex-api.herokuapp.com/api/v1/collection?page=${pageNum}`, {
             headers: {
                 "Accept":"application/json",
                 "Content-Type":"application/json",
@@ -224,7 +224,7 @@ export const fetchCollection = (token, pageNum) => {
 
 export const addToCollection = (cardID, token) => {
     return dispatch => {
-        return fetch(`https://mysterious-island-27050.herokuapp.com/api/v1/cards/${cardID}/add`, {
+        return fetch(`https://mondex-api.herokuapp.com/api/v1/cards/${cardID}/add`, {
             method: 'post',
             headers: {
                 "Accept":"application/json",
@@ -249,7 +249,7 @@ export const addToCollection = (cardID, token) => {
 
 export const removeFromCollection = (cardID, token) => {
     return dispatch => {
-        return fetch(`https://mysterious-island-27050.herokuapp.com/api/v1/cards/${cardID}`, {
+        return fetch(`https://mondex-api.herokuapp.com/api/v1/cards/${cardID}`, {
             method: 'delete',
             headers: {
                 "Accept":"application/json",
