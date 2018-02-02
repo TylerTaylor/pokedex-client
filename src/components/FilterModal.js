@@ -51,8 +51,8 @@ class FilterModal extends React.Component {
 		}
 
 		return (
-			<div className="modal-backdrop" style={backdropStyle}>
-				<div className="modal-display" style={modalStyle}>
+			<div className="filter-modal-backdrop" style={backdropStyle}>
+				<div className="filter-modal-display" style={modalStyle}>
 					{this.props.children}            
 
 					<form 
